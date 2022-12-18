@@ -1,0 +1,16 @@
+name: 'Github reporting notifier'
+description: 'Posts a message on slack a reporting of github'
+inputs:
+  github-token:
+    required: true
+    description: 'Needed to query pull requests'
+  slackbot-token:
+    required: true
+    description: 'Needed to authenticate to Slacks API'
+  slack-conversation-id:
+    required: true
+    description: 'Channel or group that the message will be delivered to'
+runs:
+  using: 'node16'
+  main: 'index.js'
+
