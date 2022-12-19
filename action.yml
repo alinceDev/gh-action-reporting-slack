@@ -12,5 +12,5 @@ inputs:
     description: 'Channel or group that the message will be delivered to'
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: 'dist/index.js'
 
