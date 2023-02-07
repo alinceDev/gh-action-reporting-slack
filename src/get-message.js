@@ -66,13 +66,13 @@ export async function getMessage({Octokit, context}) {
     pullRequests = await getRequiredReview({Octokit, context, pullRequests});
     const { data: branches } = await Octokit.rest.repos.listBranches({...context.repo});
     let message = parsePullRequests({pullRequests});
-    const branchesMessages = checkBranches(branches)
+    if (message !== null) {
+      const branchesMessages = checkBranches(branches)
 
-    if (branchesMessages !== '') {
-      message = message + '\n\n' + branchesMessages;
+      if (branchesMessages !== '') {
+        message = message + '\n\n' + branchesMessages;
+      }
     }
-
-    console.log(SlackBlockKit.sectionWithText(message))
 
     return SlackBlockKit.sectionWithText(message);
 
